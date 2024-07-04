@@ -1,23 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import {Route, Routes} from 'react-router-dom'
+import FeaturedProperties from './component/featuredProperties/FeaturedProperties'
+import Navbar from './component/navbar/Navbar'
+import Signin from './component/signin/Signin'
+import Signup from './component/signup/Signup'
+import Properties from './component/properties/Properties'
+import PropertyDetail from './component/propertyDetail/PropertyDetail'
+
+import Hero from './component/hero/Hero'
+import NewsLetter from './component/newsletter/Newsletter'
+import Footer from './component/footer/Footer'
+import PopularProperties from './component/popularProperties/PopularProperties'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path='/' element={
+          <>
+            <Navbar />
+            <Hero />
+            <PopularProperties />
+            <FeaturedProperties />
+            <NewsLetter />
+            <Footer />  
+          </>
+        } />
+        
+        <Route path='/properties' element={
+          <>
+            <Navbar />
+            <Properties />
+            <Footer />
+          </>
+        } />
+        <Route path='/propertyDetail/:id' element={
+          <>
+            <Navbar />
+            <PropertyDetail />
+            <Footer />
+          </>
+        } />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/signin' element={<Signin />} />
+      </Routes>
     </div>
   );
 }
